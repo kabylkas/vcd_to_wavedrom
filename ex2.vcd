@@ -1,0 +1,38 @@
+$date Sept 10 2008 12:00:05 $end
+$version Example Simulator V0.1 $end
+$timescale 1 ns $end
+$scope module top $end
+$var wire 32 ! data $end
+$var wire 1 @ en $end
+$var wire 1 # rx $end
+$var wire 1 $ tx $end
+$var wire 1 % err $end
+$var wire 1 ^ ready $end
+$upscope $end
+$enddefinitions $end
+#0
+b10000001 !
+0@
+1#
+0$
+1%
+0^
+#1
+1@
+#2
+0@
+#3
+1@
+#4
+0@
+#5
+1@
+#11
+b0 !
+0#
+#16
+b101010101010110101010101010101 !
+1#
+#20
+0%
+#23
