@@ -1,0 +1,59 @@
+$comment
+File created using the following command:
+vcd dumpports results/dump1
+$end
+$date
+Tue Aug 20 13:33:02 2000
+$end
+$version
+ModelSim Version 5.4c
+$end
+$timescale
+1ns
+$end
+$scope module top1 $end
+$scope module u1 $end
+$var port 1 <0 a $end
+$var port 1 <1 b $end
+$var port 1 <2 c $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpports
+pN 6 6 <0
+pX 6 6 <1
+p? 6 6 <2
+$end
+#10
+pX 6 6 <1
+pN 6 6 <0
+p? 6 6 <2
+#20
+pL 6 0 <1
+pD 6 0 <0
+pa 6 6 <2
+#30
+pH 0 6 <1
+pU 0 6 <0
+pb 6 6 <2
+#40
+pT 0 0 <1
+pZ 0 0 <0
+pX 6 6 <2
+#50
+pX 5 5 <1
+pN 5 5 <0
+p? 6 6 <2
+#60
+pL 5 0 <1
+pD 5 0 <0
+pa 6 6 <2
+#70
+pH 0 5 <1
+pU 0 5 <0
+pb 6 6 <2
+#80
+pX 6 6 <1
+pN 6 6 <0
+p? 6 6 <2

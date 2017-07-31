@@ -1,13 +1,13 @@
 import Verilog_VCD
-import pprint
 
-file_name = "ex2.vcd"
-wave_forms = Verilog_VCD.parse_vcd(file_name)
+read_file_name = "huge_test.vcd"
+wave_forms = Verilog_VCD.parse_vcd(read_file_name)
 names = []
 sizes = []
 waves = []
 values = []
 max_time = 0
+i=0;
 for wave_form_symbol in wave_forms:
     wave_form = wave_forms[wave_form_symbol]
     #get the name of the waveform
@@ -53,20 +53,26 @@ for wave_form_symbol in wave_forms:
 
 #extend the waves to make them equal
 waves_extended = []
+waves_shortened = []
 max_time+=10
-print max_time
+max_length = 50
 for wave in waves:
     diff = max_time-len(wave)
     for j in range(diff):
         wave+='.'
     waves_extended.append(wave)
+    if max_length<len(wave):
+        waves_shortened.append(wave[0:max_length])
 
 #construct WavedromJSON
+#waves_to_process = waves_extended
+waves_to_process = waves_shortened
+
 i=0
 wavedrom_json = '{signal: ['
-for wave in waves_extended:
+for wave in waves_to_process:
     if i>0:
-       wavedrom_json += ', '
+       wavedrom_json += ',\n'
     #construct values
     str_values = ""
     not_first = False
