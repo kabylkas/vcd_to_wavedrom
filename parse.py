@@ -1,7 +1,9 @@
 import Verilog_VCD
 
-read_file_name = "huge_test.vcd"
+read_file_name = "ex4.vcd"
+print("Reading {0} file...".format(read_file_name))
 wave_forms = Verilog_VCD.parse_vcd(read_file_name)
+print("Parsing {0} file...".format(read_file_name))
 names = []
 sizes = []
 waves = []
@@ -51,6 +53,8 @@ for wave_form_symbol in wave_forms:
     waves.append(wave)
     values.append(temp_values)
 
+print("Successfully parsed .vcd file")
+
 #extend the waves to make them equal
 waves_extended = []
 waves_shortened = []
@@ -93,5 +97,32 @@ for wave in waves_to_process:
 
 wavedrom_json += ']}'
 
-print(wavedrom_json)
-   
+print("Successfully generated wavedrom...")
+
+# writing html file
+path_to_wavedrom = "../wavedrom/test/"
+write_file_name = "vcd_to_wavedrom.html"
+f = open(path_to_wavedrom+write_file_name, 'w')
+
+to_write = """<html>
+<head>
+  <meta charset="UTF-8">
+  <title>testsuit</title>
+  <script type="text/javascript" src="../skins/default.js"></script>
+  <script type="text/javascript" src="../skins/narrow.js"></script>
+  <script type="text/javascript" src="../wavedrom.min.js"></script>
+</head>
+
+<body>
+
+<div class="content">
+
+<script type="WaveDrom">"""+wavedrom_json+"""</script>
+<script>(function(){ window.addEventListener("load", WaveDrom.ProcessAll, false); })();</script>
+</body>
+</html>"""
+
+f.write(to_write)
+f.close()
+print("Generated file: {0}".format(path_to_wavedrom+write_file_name))
+print("Done!")
